@@ -142,8 +142,7 @@ export const App = () => {
             view="primary-medium"
             style={{ marginBottom: 0 }}
           >
-            Подключите кредитный лимит и пользуйтесь как кредиткой — без
-            процентов на целый год
+            Подключите кредитный лимит и пользуйтесь как кредиткой
           </Typography.Text>
 
           <Gap size={32} />
@@ -183,8 +182,12 @@ export const App = () => {
           >
             От 10 000 ₽ до 140 000 ₽
           </Typography.Text>
+        </div>
+      )}
 
-          <Gap size={32} />
+      {step === 6 && (
+        <div className={appSt.container}>
+          <Gap size={24} />
 
           <Typography.TitleResponsive
             font="system"
@@ -489,30 +492,6 @@ export const App = () => {
             </div>
           </div>
 
-          <Gap size={16} />
-
-          <div
-            className={appSt.detail}
-            onClick={() => {
-              setStep(3);
-            }}
-            ref={divRef}
-          >
-            <DocumentsLinesMIcon
-              width="24"
-              style={{ marginRight: "1rem" }}
-              color="gray"
-            />
-
-            <Typography.Text
-              tag="p"
-              view="primary-medium"
-              style={{ marginBottom: 0 }}
-            >
-              Документы
-            </Typography.Text>
-          </div>
-
           <Gap size={32} />
 
           <Input
@@ -730,9 +709,24 @@ export const App = () => {
         </>
       )}
 
-      {step === 1 && <Gap size={96} />}
+      {(step === 1 || step === 6) && <Gap size={96} />}
 
       {step === 1 && (
+        <div className={appSt.bottomBtnThx}>
+          <ButtonMobile
+            onClick={() => {
+              setStep(6);
+            }}
+            block
+            view="primary"
+            href=""
+          >
+            Продолжить
+          </ButtonMobile>
+        </div>
+      )}
+
+      {step === 6 && (
         <div className={appSt.bottomBtnThx}>
           <ButtonMobile
             onClick={() => {
